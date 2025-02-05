@@ -10,6 +10,7 @@ import {
   FormLabel,
 } from '@/components/ui/common/Form';
 import { Input } from '@/components/ui/common/Input';
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import {
   newPasswordSchema,
   type TypeNewPasswordSchema,
@@ -46,7 +47,7 @@ const NewPasswordForm = () => {
 
   const onSubmit = (data: TypeNewPasswordSchema) => {
     console.log(data);
-    router.push('/account/login');
+    router.push(RoutePaths.auth.login);
 
     // create({ variables: { data } }); //TODO: Add login
   };
@@ -55,7 +56,7 @@ const NewPasswordForm = () => {
     <AuthWrapper
       heading={translate('heading')}
       backButtonLabel={translate('backButtonLabel')}
-      backButtonHref="/account/login"
+      backButtonHref={RoutePaths.auth.login}
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">

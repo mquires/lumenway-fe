@@ -1,6 +1,7 @@
 'use client';
 
 import { useAuth } from '@/hooks/useAuth';
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { Button } from '../../ui/common/Button';
@@ -16,10 +17,10 @@ const HeaderMenu = () => {
         <ProfileMenu />
       ) : (
         <>
-          <Link href="/account/login">
+          <Link href={RoutePaths.auth.login}>
             <Button variant="secondary">{translate('login')}</Button>
           </Link>
-          <Link href="/account/create">
+          <Link href={RoutePaths.auth.register}>
             <Button>{translate('register')}</Button>
           </Link>
         </>

@@ -2,6 +2,7 @@
 
 import { useAuth } from '@/hooks/useAuth';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import { LayoutDashboard, Loader, LogOut, User } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
@@ -27,7 +28,7 @@ const ProfileMenu = () => {
 
   const logout = () => {
     exit();
-    router.push('/account/login');
+    router.push(RoutePaths.auth.login);
   };
 
   return isLoadingProfile || !user ? (
@@ -51,7 +52,7 @@ const ProfileMenu = () => {
               {translate('channel')}
             </DropdownMenuItem>
           </Link>
-          <Link href="/dashboard/settings">
+          <Link href={RoutePaths.dashboard.settings}>
             <DropdownMenuItem>
               <LayoutDashboard className="mr-2 size-2" />
               {translate('dashboard')}

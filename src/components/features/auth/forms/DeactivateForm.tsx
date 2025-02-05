@@ -16,6 +16,7 @@ import {
   InputOTPSlot,
 } from '@/components/ui/common/InputOTP';
 import { useAuth } from '@/hooks/useAuth';
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import {
   deactivateSchema,
   type TypeDeactivateSchema,
@@ -57,7 +58,7 @@ const DeactivateForm = () => {
   const onSubmit = (data: TypeDeactivateSchema) => {
     console.log(data);
     exit();
-    router.push('/');
+    router.push(RoutePaths.main.home);
 
     // setIsShowTwoFactor(true);
 
@@ -68,7 +69,7 @@ const DeactivateForm = () => {
     <AuthWrapper
       heading={translate('heading')}
       backButtonLabel={translate('backButtonLabel')}
-      backButtonHref="/dashboard/settings"
+      backButtonHref={RoutePaths.dashboard.settings}
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">

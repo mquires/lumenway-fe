@@ -15,6 +15,7 @@ import {
   FormLabel,
 } from '@/components/ui/common/Form';
 import { Input } from '@/components/ui/common/Input';
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import {
   resetPasswordSchema,
   type TypeResetPasswordSchema,
@@ -61,7 +62,7 @@ const ResetPasswordForm = () => {
     <AuthWrapper
       heading={translate('heading')}
       backButtonLabel={translate('backButtonLabel')}
-      backButtonHref="/account/login"
+      backButtonHref={RoutePaths.auth.login}
     >
       {isSuccess ? (
         <Alert>

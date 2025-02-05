@@ -3,6 +3,7 @@
 import { Button } from '@/components/ui/common/Button';
 import { CardContainer } from '@/components/ui/elements/CardContainer';
 import { ConfirmModal } from '@/components/ui/elements/ConfirmModal';
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
@@ -19,7 +20,7 @@ const DeactivateCard = () => {
           <ConfirmModal
             heading={translate('confirmModal.heading')}
             message={translate('confirmModal.message')}
-            onConfirm={() => router.push('/account/deactivate')}
+            onConfirm={() => router.push(RoutePaths.auth.deactivate)}
           >
             <Button>{translate('deactivateButton')}</Button>
           </ConfirmModal>

@@ -16,6 +16,7 @@ import {
   InputOTPSlot,
 } from '@/components/ui/common/InputOTP';
 import { useAuth } from '@/hooks/useAuth';
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import { loginSchema, type TypeLoginSchema } from '@/schemas/auth/login.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
@@ -55,7 +56,7 @@ const LoginForm = () => {
   const onSubmit = (data: TypeLoginSchema) => {
     console.log(data);
     login();
-    router.push('/dashboard/settings');
+    router.push(RoutePaths.dashboard.settings);
 
     // setIsShowTwoFactor(true);
 
@@ -66,7 +67,7 @@ const LoginForm = () => {
     <AuthWrapper
       heading={translate('heading')}
       backButtonLabel={translate('backButtonLabel')}
-      backButtonHref="/account/create"
+      backButtonHref={RoutePaths.auth.register}
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
@@ -123,7 +124,7 @@ const LoginForm = () => {
                     <div className="flex items-center justify-between">
                       <FormLabel>{translate('passwordLabel')}</FormLabel>
                       <Link
-                        href="/account/recovery"
+                        href={RoutePaths.auth.recovery}
                         className="ml-auto inline-block text-sm"
                       >
                         {translate('forgotPassword')}

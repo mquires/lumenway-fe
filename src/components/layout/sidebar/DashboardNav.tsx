@@ -1,6 +1,15 @@
 'use client';
 
-import { Banknote, DollarSign, KeyRound, Medal, MessageSquare, Settings, Users } from 'lucide-react';
+import { RoutePaths } from '@/libs/constants/routes.constants';
+import {
+  Banknote,
+  DollarSign,
+  KeyRound,
+  Medal,
+  MessageSquare,
+  Settings,
+  Users,
+} from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { v4 as uuidv4 } from 'uuid';
 import { Route } from './route.interface';
@@ -13,43 +22,43 @@ const DashboardNav = () => {
     {
       id: uuidv4(),
       label: translate('settings'),
-      href: '/dashboard/settings',
+      href: RoutePaths.dashboard.settings,
       icon: Settings,
     },
     {
       id: uuidv4(),
       label: translate('keys'),
-      href: '/dashboard/keys',
+      href: RoutePaths.dashboard.keys,
       icon: KeyRound,
     },
     {
       id: uuidv4(),
       label: translate('chatSettings'),
-      href: '/dashboard/chat',
+      href: RoutePaths.dashboard.chat,
       icon: MessageSquare,
     },
     {
       id: uuidv4(),
       label: translate('followers'),
-      href: '/dashboard/followers',
+      href: RoutePaths.dashboard.followers,
       icon: Users,
     },
     {
       id: uuidv4(),
       label: translate('sponsors'),
-      href: '/dashboard/sponsors',
+      href: RoutePaths.dashboard.sponsors,
       icon: Medal,
     },
     {
       id: uuidv4(),
       label: translate('premium'),
-      href: '/dashboard/plans',
+      href: RoutePaths.dashboard.plans,
       icon: DollarSign,
     },
     {
       id: uuidv4(),
       label: translate('transactions'),
-      href: '/dashboard/transactions',
+      href: RoutePaths.dashboard.transactions,
       icon: Banknote,
     },
   ];

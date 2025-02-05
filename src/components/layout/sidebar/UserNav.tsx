@@ -1,5 +1,6 @@
 'use client';
 
+import { RoutePaths } from '@/libs/constants/routes.constants';
 import { Folder, Home, Radio } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,19 +15,19 @@ const UserNav = () => {
     {
       id: uuidv4(),
       label: translate('home'),
-      href: '/',
+      href: RoutePaths.main.home,
       icon: Home,
     },
     {
       id: uuidv4(),
       label: translate('categories'),
-      href: '/categories',
+      href: RoutePaths.main.categories,
       icon: Folder,
     },
     {
       id: uuidv4(),
       label: translate('streams'),
-      href: '/streams',
+      href: RoutePaths.main.streams,
       icon: Radio,
     },
   ];
