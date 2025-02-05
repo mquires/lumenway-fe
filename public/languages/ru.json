@@ -1,0 +1,450 @@
+{
+  "auth": {
+    "register": {
+      "heading": "Регистрация в Lumenway",
+      "backButtonLabel": "Уже есть учетная запись? Войти",
+      "usernameLabel": "Имя пользователя",
+      "usernameDescription": "Поле ввода для имени пользоваля",
+      "emailLabel": "E-mail",
+      "emailDescription": "Поле для ввода E-mail",
+      "passwordLabel": "Пароль",
+      "passwordDescription": "Пароль должен содержать не менее 8 символов",
+      "submitButton": "Далее",
+      "successAlertTitle": "Пожалуйста, проверьте Вашу почту",
+      "successAlertDescription": "На ваш адрес электронной почты было отправлено письмо для подтверждения регистрации. Если Вы не нашли письмо, то проверьте папку «Спам»",
+      "errorMessage": "Ошибка при регистрации!"
+    },
+    "verify": {
+      "heading": "Верификация аккаунта",
+      "successMessage": "Ваш аккаунт успешно верифицирован!",
+      "errorMessage": "Ошибка при верификации!"
+    },
+    "login": {
+      "heading": "Авторизация в Lumenway",
+      "backButtonLabel": "У вас нет учетной записи? Зарегистрироваться",
+      "loginLabel": "Логин",
+      "loginDescription": "Поле ввода Вашего логина",
+      "passwordLabel": "Пароль",
+      "passwordDescription": "Пароль должен содержать не менее 8 символов",
+      "submitButton": "Войти",
+      "successMessage": "Вы успешно вошли в систему",
+      "errorMessage": "Ошибка при авторизации!",
+      "pinLabel": "6-ти значный код",
+      "pinDescription": "Введите код из вашего приложения для аутентификации",
+      "forgotPassword": "Забыли пароль?"
+    },
+    "resetPassword": {
+      "heading": "Сброс пароля",
+      "backButtonLabel": "Уже есть учетная запись? Войти",
+      "emailLabel": "E-mail",
+      "emailDescription": "Поле для ввода E-mail",
+      "submitButton": "Сбросить пароль",
+      "successAlertTitle": "Ссылка отправлена",
+      "successAlertDescription": "Ссылка для сброса пароля была отправлена на Вашу почту. Если у Вас включены уведомления в Telegram, то ссылка также была отправлена туда.",
+      "errorMessage": "Ошибка при сбросе пароля!"
+    },
+    "newPassword": {
+      "heading": "Новый пароль",
+      "backButtonLabel": "Уже есть учетная запись? Войти",
+      "passwordLabel": "Новый пароль",
+      "passwordDescription": "Введите новый пароль для аккаунта",
+      "repeatPasswordLabel": "Повторите пароль",
+      "repeatPasswordDescription": "Повторите новый пароль",
+      "submitButton": "Продолжить",
+      "successMessage": "Пароль успешно изменен",
+      "errorMessage": "Ошибка при установлении нового пароля!"
+    },
+    "deactivate": {
+      "heading": "Деактивация аккаунта",
+      "backButtonLabel": "Перейти в панель управления",
+      "pinLabel": "6-ти значный код",
+      "pinDescription": "На Вашу почту был отправлен код подтверждения. Если у Вас включены уведомления в Telegram, то ссылка также была отправлена туда.",
+      "emailLabel": "E-mail",
+      "emailDescription": "Ваша почта от аккаунта",
+      "passwordLabel": "Пароль",
+      "passwordDescription": "Пароль от аккаунта",
+      "submitButton": "Деактивировать",
+      "successMessage": "Вы успешно деактивировали аккаунт",
+      "errorMessage": "Ошибка при деактивации"
+    }
+  },
+  "layout": {
+    "header": {
+      "menu": {
+        "login": "Войти",
+        "register": "Зарегистрироваться",
+        "profileMenu": {
+          "successMessage": "Вы успешно вышли из системы",
+          "channel": "Мой канал",
+          "dashboard": "Панель управления",
+          "logout": "Выйти",
+          "notifications": {
+            "heading": "Уведомления",
+            "loading": "Загрузка уведомлений...",
+            "empty": "Список уведомлений пуст"
+          }
+        }
+      },
+      "search": {
+        "placeholder": "Поиск"
+      }
+    },
+    "sidebar": {
+      "header": {
+        "expand": "Развернуть",
+        "collapse": "Свернуть",
+        "navigation": "Навигация",
+        "forYou": "Для Вас"
+      },
+      "userNav": {
+        "home": "Главная",
+        "categories": "Категории",
+        "streams": "Стримы",
+        "recommended": "Рекомендовано"
+      },
+      "recommended": {
+        "heading": "Рекомендации"
+      },
+      "dashboardNav": {
+        "settings": "Настройки",
+        "streamSettings": "Настройки стрима",
+        "keys": "Ключи для стрима",
+        "chatSettings": "Настройки чата",
+        "followers": "Подписчики",
+        "sponsors": "Спонсоры",
+        "premium": "Premium планы",
+        "transactions": "Транзакции"
+      }
+    }
+  },
+  "dashboard": {
+    "settings": {
+      "header": {
+        "heading": "Настройки",
+        "description": "Здесь Вы можете управлять настройками",
+        "profile": "Профиль",
+        "account": "Аккаунт",
+        "appearance": "Внешний вид",
+        "notifications": "Уведомления",
+        "sessions": "Сессии"
+      },
+      "profile": {
+        "header": {
+          "heading": "Профиль",
+          "description": "Настройте Ваш профиль, чтобы сделать ее более привлекательной для других пользователей"
+        },
+        "avatar": {
+          "heading": "Изображения профиля",
+          "updateButton": "Обновить",
+          "confirmModal": {
+            "heading": "Удаление аватара",
+            "message": "Вы действительно хотите удалить изображение профиля? Это действие нельзя будет отменить!"
+          },
+          "info": "Поддерживаемые форматы: JPG, JPEG, PNG, WEBP и GIF. Максимальный размер: 10 МБ.",
+          "successUpdateMessage": "Изображение профиля успешно обновлено!",
+          "errorUpdateMessage": "Ошибка при загрузке изображения!",
+          "successRemoveMessage": "Изображение профиля успешно удалено!",
+          "errorRemoveMessage": "Ошибка при удалении изображения!"
+        },
+        "info": {
+          "heading": "Настройки профиля",
+          "usernameLabel": "Имя пользователя",
+          "usernamePlaceholder": "linwest",
+          "usernameDescription": "Под этим именем вы будете известны другим пользователям",
+          "displayNameLabel": "Отображаемое имя",
+          "displayNamePlaceholder": "Lin West",
+          "displayNameDescription": "Используйте прописные буквы для имени пользователя",
+          "bioLabel": "О себе",
+          "bioPlaceholder": "Расскажите о себе",
+          "bioDescription": "Информация о себе должна быть не более 300 символов",
+          "submitButton": "Сохранить изменения",
+          "successMessage": "Профиль успешно обновлен!",
+          "errorMessage": "Ошибка при обновлении профиля"
+        },
+        "socialLinks": {
+          "createForm": {
+            "heading": "Ссылки на социальные сети",
+            "titleLabel": "Название социальной сети",
+            "titlePlaceholder": "Youtube",
+            "titleDescription": "Описание социальной сети",
+            "urlLabel": "URL социальной сети",
+            "urlPlaceholder": "https://github.com/mquires",
+            "urlDescription": "Куда ведет эта ссылка? Введите полный URL адрес, например https://github.com/mquires",
+            "submitButton": "Добавить",
+            "successMessage": "Ссылка на социальную сеть успешно добавлена",
+            "errorMessage": "Ошибка при добавлении ссылки"
+          },
+          "editForm": {
+            "cancelButton": "Отмена",
+            "submitButton": "Сохранить",
+            "successUpdateMessage": "Ссылка на социальную сеть успешно изменена",
+            "successRemoveMessage": "Ссылка на социальную сеть успешно удалена",
+            "errorRemoveMessage": "Ошибка при удалении социальной сети"
+          },
+          "successReorderMessage": "Порядок ссылок изменен",
+          "errorReorderMessage": "Ошибка при изменении порядка ссылок"
+        }
+      },
+      "account": {
+        "header": {
+          "heading": "Аккаунт",
+          "description": "Управляйте настройками Вашего аккаунта, включая изменение доступа, безопасность и возможность деактивации",
+          "securityHeading": "Безопасность",
+          "securityDescription": "Настройте двухфакторную аутентификацию для дополнительной безопасности",
+          "deactivationHeading": "Деактивация",
+          "deactivationDescription": "Если Вы хотите временно или постоянно отключить свой аккаунт, используйте эту опцию"
+        },
+        "email": {
+          "heading": "Адрес электронной почты",
+          "emailLabel": "E-mail",
+          "emailDescription": "Введите ваш новый адрес электронной почты",
+          "submitButton": "Сохранить",
+          "successMessage": "Почта успешно обновлена",
+          "errorMessage": "Ошибка при обновлении почты"
+        },
+        "password": {
+          "heading": "Пароль от аккаунта",
+          "oldPasswordLabel": "Старый пароль",
+          "oldPasswordDescription": "Введите ваш старый пароль, чтобы подтвердить личность",
+          "newPasswordLabel": "Новый пароль",
+          "newPasswordDescription": "Ваш новый пароль должен содержать не менее 8 символов",
+          "submitButton": "Сохранить",
+          "successMessage": "Пароль успешно обновлен",
+          "errorMessage": "Ошибка при обновлении пароля"
+        },
+        "twoFactor": {
+          "heading": "Аутентификация с помощью TOTP",
+          "description": "Улучшите безопасность Вашего аккаунта с помощью TOTP аутентификации. Это дополнительный уровень защиты аккаунта, который требует ввод уникального кода",
+          "enable": {
+            "trigger": "Включить",
+            "heading": "Включение TOTP",
+            "qrInstructions": "Сканируйте QR-код для добавления TOTP",
+            "secretCodeLabel": "Секретный код: ",
+            "pinLabel": "PIN-код",
+            "pinDescription": "Введите 6-ти значный код, предоставленный Вашим приложением для аутентификации",
+            "submitButton": "Подтвердить",
+            "successMessage": "Аутентификация с помощью TOTP включена",
+            "errorMessage": "Ошибка при верификации кода"
+          },
+          "disable": {
+            "trigger": "Выключить",
+            "heading": "Вы действительно хотите отключить TOTP?",
+            "message": "После отключения аутентификации через TOTP Ваш аккаунт станет менее защищенным. Вы действительно хотите продолжить?",
+            "successMessage": "Аутентификация через TOTP отключена",
+            "errorMessage": "Ошибка при отключении TOTP"
+          }
+        },
+        "deactivation": {
+          "heading": "Деактивация аккаунта",
+          "description": "После деактивации аккаунта Вы не сможете в него войти. Через 7 дней аккаунт будет полностью удален. До этого момента Вы можете обратиться в техподдержку для восстановления аккаунта",
+          "confirmModal": {
+            "heading": "Подтверждение деактивации",
+            "message": "Вы уверены, что хотите деактивировать аккаунт? Восстановить доступ можно только в течение 7 дней"
+          },
+          "deactivateButton": "Деактивировать"
+        }
+      },
+      "appearance": {
+        "header": {
+          "heading": "Внешний вид",
+          "description": "Настройте внешний вид платформы на свой вкус. Выберите тему и язык, чтобы сделать Ваше взаимодействие более комфортным."
+        },
+        "theme": {
+          "heading": "Смена темы",
+          "description": "Вы можете выбрать комфортную тему",
+          "successMessage": "Тема сайта успешно изменена"
+        },
+        "language": {
+          "heading": "Язык сайта",
+          "description": "Выберите язык сайта",
+          "selectPlaceholder": "Выберите язык",
+          "successMessage": "Язык сайта успешно изменен"
+        },
+        "color": {
+          "heading": "Цвет акцента",
+          "description": "Выберите цвет акцента для интерфейса"
+        }
+      },
+      "notifications": {
+        "header": {
+          "heading": "Уведомления",
+          "description": "Настройте уведомления от Lumenway, чтобы получать уведомления о новых трансляциях на каналах, на которые Вы подписаны, а также о Ваших новых подписчиках"
+        },
+        "webNotifications": {
+          "heading": "Уведомления на сайте",
+          "description": "Если Вы отключите уведомления на сайте, то больше не будете получать новые уведомления о подписчиках на Ваш канал и о новых трансляциях"
+        },
+        "telegramNotifications": {
+          "heading": "Уведомления в Telegram",
+          "description": "Если Вы включите уведомления через Telegram, то сможете получать сообщения о новых подписках на канал, новых трансляциях, сбросе пароля и коды двухфакторной авторизации"
+        },
+        "successMessage": "Настройки уведомлений успешно обновлены",
+        "errorMessage": "Ошибка при обновлении настроек уведомлений"
+      },
+      "sessions": {
+        "header": {
+          "heading": "Сессии",
+          "description": "Здесь показаны активные сессии на устройствах, с которых вы производили вход в систему"
+        },
+        "info": {
+          "current": "Текущая сессия",
+          "active": "Активные сессии",
+          "notFound": "Активных сессий не найдено"
+        },
+        "sessionItem": {
+          "deleteButton": "Удалить",
+          "detailsButton": "Подробнее",
+          "confirmModal": {
+            "heading": "Удаление сессии",
+            "message": "Вы уверены, что хотите удалить данную сессию? Это действие приведет к завершению всех активных действий на данном устройстве"
+          },
+          "successMessage": "Сессия удалена",
+          "errorMessage": "Ошибка при удалении сессии"
+        },
+        "sessionModal": {
+          "heading": "Информация о данной сессии",
+          "device": "Устройство: ",
+          "location": "Местонахождение: ",
+          "ipAddress": "IP-адрес: ",
+          "createdAt": "Дата создания: "
+        }
+      }
+    },
+    "keys": {
+      "header": {
+        "heading": "Ключи для стрима",
+        "description": "Сгенерируйте URL и ключ для проведения трансляции"
+      },
+      "url": {
+        "heading": "URL"
+      },
+      "key": {
+        "heading": "Ключ"
+      },
+      "instructionModal": {
+        "trigger": "Инструкция",
+        "heading": "Инструкция по настройке OBS для прямых трансляций",
+        "description": "Для того чтобы начать проводить трансляции, следуйте подробной инструкции по подключению OBS Studio.",
+        "step1": {
+          "title": "Шаг 1: Установка OBS Studio и генерация Server URL и Stream Key",
+          "description": "Чтобы начать трансляцию, Вам необходимо получить Server URL и Stream Key."
+        },
+        "downloadObs": "Скачайте OBS Studio",
+        "downloadObsDescription": "Прежде чем приступить к настройке трансляции, Вам следует установить OBS Studio",
+        "obsLinkText": "OBS Studio",
+        "copyKeys": "Скопируйте Server URL и Stream Key",
+        "copyKeysDescription": "После генерации на экране появятся два поля: Server URL и Stream Key. Нажмите на иконки копирования рядом с каждым из полей, чтобы сохранить данные в буфер обмена",
+        "step2": {
+          "title": "Шаг 2: Настройка OBS Studio",
+          "description": "Теперь, когда у Вас есть необходимые данные, давайте настроим OBS для работы с Вашей трансляцией:"
+        },
+        "openObs": "Откройте OBS Studio",
+        "openObsDescription": "Если у Вас еще не установлен OBS Studio, скачайте его с официального сайта и установите. После запуска откроется главная страница OBS.",
+        "openStreamSettings": "Откройте настройки трансляции",
+        "openStreamSettingsDescription": "В верхнем меню нажмите «Файл» → «Настройки». Перейдите во вкладку «Трансляция».",
+        "enterDetails": "Введите ваши данные",
+        "enterDetailsDescription": "В поле «Сервис» выберите опцию «Пользовательский...». Вставьте скопированный ранее Server URL в поле «URL». В поле «Ключ трансляции» вставьте ваш Stream Key.",
+        "saveSettings": "Сохраните настройки",
+        "saveSettingsDescription": "Нажмите «Применить», а затем «ОК», чтобы сохранить изменения.",
+        "step3": {
+          "title": "Шаг 3: Начало трансляции",
+          "description": "После успешной настройки OBS вы готовы начать прямую трансляцию:"
+        },
+        "startStream": "Запустите трансляцию",
+        "startStreamDescription": "Вернитесь на главный экран OBS и нажмите кнопку «Начать трансляцию».",
+        "monitorStream": "Следите за своей трансляцией",
+        "monitorStreamDescription": "Ваша трансляция начнется в режиме реального времени, и вы сможете наблюдать за ней как на платформе, так и в OBS.",
+        "congrats": "Поздравляем! Теперь вы успешно настроили OBS для трансляций на нашей платформе. Ваша аудитория ждет новых ярких моментов и контента!",
+        "close": "Закрыть"
+      },
+      "createModal": {
+        "trigger": "Сгенерировать ключи",
+        "heading": "Сгенерировать ключи",
+        "ingressTypeLabel": "Тип подключения",
+        "ingressTypePlaceholder": "Выберите тип подключения",
+        "ingressTypeDescription": "Выберите RTMP для классического вещания или WHIP для WebRTC подключений.",
+        "submitButton": "Сгенерировать",
+        "successMessage": "Входной поток создан",
+        "errorMessage": "Ошибка при создании входного потока"
+      }
+    },
+    "chat": {
+      "header": {
+        "heading": "Настройки чата",
+        "description": "Здесь Вы можете управлять настройками Вашего чата"
+      },
+      "isChatEnabled": {
+        "heading": "Включить чат",
+        "description": "Если Вы включите чат, зрители смогут писать сообщения в чате во время Вашей трансляции"
+      },
+      "isChatFollowersOnly": {
+        "heading": "Чат только для подписчиков",
+        "description": "Если Вы включите эту настройку, только Ваши зрители смогут писать сообщения в чате"
+      },
+      "isChatPremiumFollowersOnly": {
+        "heading": "Чат только для Premium подписчиков",
+        "description": "Если Вы включите эту настройку, только Premium зрители смогут писать сообщения в чате"
+      },
+      "successMessage": "Настройки чата успешно обновлены",
+      "errorMessage": "Ошибка при обновлении настроек чата"
+    },
+    "followers": {
+      "header": {
+        "heading": "Подписчики",
+        "description": "Здесь отображается список всех Ваших подписчиков"
+      },
+      "columns": {
+        "date": "Дата подписки",
+        "user": "Пользователь",
+        "actions": "Действия",
+        "viewChannel": "Перейти на канал"
+      }
+    },
+    "sponsors": {
+      "header": {
+        "heading": "Спонсоры",
+        "description": "Здесь отображается список всех Ваших спонсоров"
+      },
+      "columns": {
+        "date": "Дата окончания",
+        "user": "Пользователь",
+        "plan": "План",
+        "actions": "Действия",
+        "viewChannel": "Перейти на канал"
+      }
+    }
+  },
+  "components": {
+    "liveBadge": {
+      "text": "В ЭФИРЕ"
+    },
+    "confirmModal": {
+      "cancel": "Отмена",
+      "continue": "Продолжить"
+    },
+    "copyButton": {
+      "successMessage": "Скопировано"
+    },
+    "dataTable": {
+      "notFound": "Ничего не найдено"
+    }
+  },
+  "utils": {
+    "formatDate": {
+      "months": {
+        "january": "января",
+        "february": "февраля",
+        "march": "марта",
+        "april": "апреля",
+        "may": "мая",
+        "june": "июня",
+        "july": "июля",
+        "august": "августа",
+        "september": "сентября",
+        "october": "октября",
+        "november": "ноября",
+        "december": "декабря"
+      }
+    }
+  }
+}

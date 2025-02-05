@@ -1,0 +1,10 @@
+query FindChannelByUsername($username: String!) {
+  FindChannelByUsername(username: $username) {
+    username
+    avatar
+    displayName
+    stream {
+      title
+    }
+  }
+}
