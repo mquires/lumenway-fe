@@ -24,6 +24,7 @@ export const useCurrentUser = () => {
       email: 'email@email.com',
       avatar: '/avatar.jpg',
       isTotpEnabled: false,
+      isVerified: true,
       notificationSettings: {
         webNotifications: false,
         telegramNotifications: false,

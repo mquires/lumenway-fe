@@ -412,6 +412,56 @@
         "actions": "Действия",
         "viewChannel": "Перейти на канал"
       }
+    },
+    "plans": {
+      "header": {
+        "heading": "Premium планы",
+        "description": "Здесь отображается список Premium планов для Вашего канала"
+      },
+      "alert": {
+        "heading": "Требуется верификация канала",
+        "description": "Для создания Premium планов Ваш канал должен пройти верификацию. Для этого на канале должно быть не менее 10 подписчиков, чтобы разблокировать эту функцию"
+      },
+      "createForm": {
+        "trigger": "Создать план",
+        "heading": "Создать план",
+        "titleLabel": "Название",
+        "titlePlaceholder": "Premium подписка на канал",
+        "titleDescription": "Введите название Вашего плана. Это название будет отображаться Вашим подписчикам",
+        "descriptionLabel": "Описание",
+        "descriptionPlaceholder": "Опишите, что входит в Ваш план",
+        "descriptionDescription": "Добавьте описание плана, чтобы описать все преимущества подписки",
+        "priceLabel": "Цена",
+        "pricePlaceholder": "Цена",
+        "priceDescription": "Укажите цену Вашего плана в $",
+        "submitButton": "Создать",
+        "successMessage": "Premium план успешно создан",
+        "errorMessage": "Ошибка при создании плана"
+      },
+      "columns": {
+        "date": "Дата создания",
+        "title": "Название",
+        "price": "Цена",
+        "actions": "Действия",
+        "remove": "Удалить",
+        "successMessage": "План успешно удален",
+        "errorMessage": "Ошибка при удалении плана"
+      }
+    },
+    "transactions": {
+      "header": {
+        "heading": "Транзакции",
+        "description": "Здесь отображаются транзакции, связанные с оформлением спонсоров на канал"
+      },
+      "columns": {
+        "date": "Дата создания",
+        "status": "Статус",
+        "success": "Успешно",
+        "pending": "В ожидании",
+        "failed": "Ошибка",
+        "expired": "Истек",
+        "amount": "Сумма"
+      }
     }
   },
   "components": {
