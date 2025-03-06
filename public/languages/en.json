@@ -117,6 +117,10 @@
       }
     }
   },
+  "home": {
+    "streamsHeading": "Channels you may like",
+    "categoriesHeading": "Categories you may like"
+  },
   "dashboard": {
     "settings": {
       "header": {
@@ -477,6 +481,10 @@
     },
     "dataTable": {
       "notFound": "Nothing found"
+    },
+    "emptyState": {
+      "heading": "Nothing found",
+      "description": "Unfortunately, nothing was found for your request. Try another request?"
     }
   },
   "utils": {
