@@ -12,6 +12,7 @@
       "submitButton": "Далее",
       "successAlertTitle": "Пожалуйста, проверьте Вашу почту",
       "successAlertDescription": "На ваш адрес электронной почты было отправлено письмо для подтверждения регистрации. Если Вы не нашли письмо, то проверьте папку «Спам»",
+      "successMessage": "Регистрация прошла успешно!",
       "errorMessage": "Ошибка при регистрации!"
     },
     "verify": {
@@ -48,8 +49,8 @@
       "backButtonLabel": "Уже есть учетная запись? Войти",
       "passwordLabel": "Новый пароль",
       "passwordDescription": "Введите новый пароль для аккаунта",
-      "repeatPasswordLabel": "Повторите пароль",
-      "repeatPasswordDescription": "Повторите новый пароль",
+      "passwordRepeatLabel": "Повторите пароль",
+      "passwordRepeatDescription": "Повторите новый пароль",
       "submitButton": "Продолжить",
       "successMessage": "Пароль успешно изменен",
       "errorMessage": "Ошибка при установлении нового пароля!"

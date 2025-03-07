@@ -4,12 +4,12 @@ export const useAuth = () => {
   const isAuthenticated = authStore(state => state.isAuthenticated);
   const setIsAuthenticated = authStore(state => state.setIsAuthenticated);
 
-  const login = () => setIsAuthenticated(true);
+  const auth = () => setIsAuthenticated(true);
   const exit = () => setIsAuthenticated(false);
 
   return {
     isAuthenticated,
-    login,
+    auth,
     exit,
   };
 };

@@ -12,7 +12,7 @@ const WrapperTotp = () => {
   const { user, isLoadingProfile } = useCurrentUser();
 
   return isLoadingProfile ? (
-    <WrapperTotpSkeleton />
+    <Skeleton className="h-24 w-full" />
   ) : (
     <CardContainer
       heading={translate('heading')}
@@ -27,7 +27,3 @@ const WrapperTotp = () => {
 };
 
 export default WrapperTotp;
-
-export const WrapperTotpSkeleton = () => {
-  return <Skeleton className="h-24 w-full" />;
-};

@@ -9,19 +9,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/common/Dialog';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/common/InputOTP';
+import { Form } from '@/components/ui/common/Form';
+import { OTPController } from '@/components/ui/elements/formControllers/OTPController';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import {
   enableTotpSchema,
@@ -96,29 +85,12 @@ const EnableTotp = () => {
                   : ''}
               </span>
             </div>
-            <FormField
+            <OTPController
               control={form.control}
               name="pin"
-              render={({ field }) => (
-                <FormItem className="flex flex-col justify-center max-sm:items-center">
-                  <FormLabel>{translate('pinLabel')}</FormLabel>
-                  <FormControl>
-                    <InputOTP maxLength={6} {...field}>
-                      <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                      </InputOTPGroup>
-                    </InputOTP>
-                  </FormControl>
-                  <FormDescription>
-                    {translate('pinDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              label={translate('pinLabel')}
+              description={translate('pinDescription')}
+              className="flex flex-col justify-center max-sm:items-center"
             />
             <DialogFooter>
               <Button type="submit" disabled={!isValid}>

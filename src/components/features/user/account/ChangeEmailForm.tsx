@@ -1,17 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
+import { Form } from '@/components/ui/common/Form';
 import { Separator } from '@/components/ui/common/Separator';
 import { Skeleton } from '@/components/ui/common/Skeleton';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
 import { FormWrapper } from '@/components/ui/elements/FormWrapper';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import {
@@ -42,31 +35,19 @@ const ChangeEmailForm = () => {
   };
 
   return isLoadingProfile ? (
-    <ChangeEmailFormSkeleton />
+    <Skeleton className="h-64 w-full" />
   ) : (
     <FormWrapper heading={translate('heading')}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
-          <FormField
+          <InputController
             control={form.control}
             name="email"
-            // disabled={isLoadingCreate}
-            render={({ field }) => (
-              <FormItem className="px-5">
-                <FormLabel>{translate('emailLabel')}</FormLabel>
-                <FormControl>
-                  <Input
-                    type="email"
-                    placeholder="linwest@example.com"
-                    // disabled={}
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>
-                  {translate('emailDescription')}
-                </FormDescription>
-              </FormItem>
-            )}
+            label={translate('emailLabel')}
+            placeholder="linwest@example.com"
+            type="email"
+            description={translate('emailDescription')}
+            className="px-5"
           />
           <Separator />
           <div className="flex justify-end p-5">
@@ -81,7 +62,3 @@ const ChangeEmailForm = () => {
 };
 
 export default ChangeEmailForm;
-
-export const ChangeEmailFormSkeleton = () => {
-  return <Skeleton className="h-64 w-full" />;
-};

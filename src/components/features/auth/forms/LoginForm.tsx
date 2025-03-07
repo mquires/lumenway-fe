@@ -1,20 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/common/InputOTP';
+import { Form } from '@/components/ui/common/Form';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
+import { OTPController } from '@/components/ui/elements/formControllers/OTPController';
+import { useLoginUserMutation } from '@/graphql/generated/output';
 import { useAuth } from '@/hooks/useAuth';
 import { RoutePaths } from '@/libs/constants/routes.constants';
 import { loginSchema, type TypeLoginSchema } from '@/schemas/auth/login.schema';
@@ -24,12 +14,13 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import AuthWrapper from '../AuthWrapper';
 
 const LoginForm = () => {
   const translate = useTranslations('auth.login');
   const router = useRouter();
-  const { login } = useAuth();
+  const { auth } = useAuth();
 
   const form = useForm<TypeLoginSchema>({
     resolver: zodResolver(loginSchema),
@@ -41,26 +32,25 @@ const LoginForm = () => {
 
   const [isShowTwoFactor, setIsShowTwoFactor] = useState(false);
 
-  // const [create, { loading: isLoadingCreate }] = useCreateUserMutation({
-  //   onCompleted() {
-  //     toast.success('Регистрация прошла успешно!');
-  // setIsSuccess(true)
-  //   },
-  //   onError() {
-  //     toast.error(translate('errorMessage'));
-  //   },
-  // });
+  const [login, { loading: isLoadingLogin }] = useLoginUserMutation({
+    onCompleted(data) {
+      if (data.loginUser.message) {
+        setIsShowTwoFactor(true);
+      } else {
+        auth();
+        toast.success(translate('successMessage'));
+        router.push(RoutePaths.dashboard.settings);
+      }
+    },
+    onError() {
+      toast.error(translate('errorMessage'));
+    },
+  });
 
   const { isValid } = form.formState;
 
   const onSubmit = (data: TypeLoginSchema) => {
-    console.log(data);
-    login();
-    router.push(RoutePaths.dashboard.settings);
-
-    // setIsShowTwoFactor(true);
-
-    // create({ variables: { data } }); //TODO: Add login
+    login({ variables: { data } });
   };
 
   return (
@@ -72,84 +62,46 @@ const LoginForm = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
           {isShowTwoFactor ? (
-            <FormField
+            <OTPController
               control={form.control}
               name="pin"
-              // disabled={isLoadingCreate}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('pinLabel')}</FormLabel>
-                  <FormControl>
-                    <InputOTP maxLength={6} {...field}>
-                      <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                      </InputOTPGroup>
-                    </InputOTP>
-                  </FormControl>
-                  <FormDescription>
-                    {translate('pinDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              disabled={isLoadingLogin}
+              label={translate('pinLabel')}
+              description={translate('pinDescription')}
             />
           ) : (
             <>
-              <FormField
+              <InputController
                 control={form.control}
                 name="login"
-                // disabled={isLoadingCreate}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{translate('loginLabel')}</FormLabel>
-                    <FormControl>
-                      <Input placeholder="linwest" {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      {translate('loginDescription')}
-                    </FormDescription>
-                  </FormItem>
-                )}
+                disabled={isLoadingLogin}
+                label={translate('loginLabel')}
+                placeholder="linwest"
+                description={translate('loginDescription')}
               />
-              <FormField
+              <InputController
                 control={form.control}
                 name="password"
-                // disabled={isLoadingCreate}
-                render={({ field }) => (
-                  <FormItem>
-                    <div className="flex items-center justify-between">
-                      <FormLabel>{translate('passwordLabel')}</FormLabel>
-                      <Link
-                        href={RoutePaths.auth.recovery}
-                        className="ml-auto inline-block text-sm"
-                      >
-                        {translate('forgotPassword')}
-                      </Link>
-                    </div>
-                    <FormControl>
-                      <Input
-                        placeholder="********"
-                        type="password"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      {translate('passwordDescription')}
-                    </FormDescription>
-                  </FormItem>
-                )}
+                disabled={isLoadingLogin}
+                label={translate('passwordLabel')}
+                placeholder="********"
+                type="password"
+                description={translate('passwordDescription')}
+                rightElement={
+                  <Link
+                    href={RoutePaths.auth.recovery}
+                    className="ml-auto inline-block text-sm"
+                  >
+                    {translate('forgotPassword')}
+                  </Link>
+                }
               />
             </>
           )}
           <Button
             className="w-full mt-2"
             type="submit"
-            // disabled={!isValid || isLoadingCreate}
-            disabled={!isValid}
+            disabled={!isValid || isLoadingLogin}
           >
             {translate('submitButton')}
           </Button>

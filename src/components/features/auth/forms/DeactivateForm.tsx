@@ -1,20 +1,9 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from '@/components/ui/common/InputOTP';
+import { Form } from '@/components/ui/common/Form';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
+import { OTPController } from '@/components/ui/elements/formControllers/OTPController';
 import { useAuth } from '@/hooks/useAuth';
 import { RoutePaths } from '@/libs/constants/routes.constants';
 import {
@@ -62,7 +51,7 @@ const DeactivateForm = () => {
 
     // setIsShowTwoFactor(true);
 
-    // create({ variables: { data } }); //TODO: Add login
+    // create({ variables: { data } }); //TODO: Add deactivate
   };
 
   return (
@@ -74,74 +63,32 @@ const DeactivateForm = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
           {isShowConfirm ? (
-            <FormField
+            <OTPController
               control={form.control}
               name="pin"
-              // disabled={isLoadingCreate}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('pinLabel')}</FormLabel>
-                  <FormControl>
-                    <InputOTP maxLength={6} {...field}>
-                      <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                      </InputOTPGroup>
-                    </InputOTP>
-                  </FormControl>
-                  <FormDescription>
-                    {translate('pinDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              // disabled={isLoadingDeactivate}
+              label={translate('pinLabel')}
+              description={translate('pinDescription')}
             />
           ) : (
             <>
-              <FormField
+              <InputController
                 control={form.control}
                 name="email"
-                // disabled={isLoadingCreate}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{translate('emailLabel')}</FormLabel>
-                    <FormControl>
-                      <Input
-                        type="email"
-                        placeholder="linwest@example.com"
-                        // disabled={isLoadingDeactivate}
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      {translate('emailDescription')}
-                    </FormDescription>
-                  </FormItem>
-                )}
+                // disabled={isLoadingDeactivate}
+                label={translate('emailLabel')}
+                placeholder="linwest@example.com"
+                type="email"
+                description={translate('emailDescription')}
               />
-              <FormField
+              <InputController
                 control={form.control}
                 name="password"
-                // disabled={isLoadingCreate}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{translate('passwordLabel')}</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="********"
-                        type="password"
-                        // disabled={isLoadingDeactivate}
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormDescription>
-                      {translate('passwordDescription')}
-                    </FormDescription>
-                  </FormItem>
-                )}
+                // disabled={isLoadingDeactivate}
+                label={translate('passwordLabel')}
+                placeholder="********"
+                type="password"
+                description={translate('passwordDescription')}
               />
             </>
           )}

@@ -6,15 +6,9 @@ import {
   AlertTitle,
 } from '@/components/ui/common/Alert';
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
+import { Form } from '@/components/ui/common/Form';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
+import { useCreateUserMutation } from '@/graphql/generated/output';
 import { RoutePaths } from '@/libs/constants/routes.constants';
 import {
   createAccountSchema,
@@ -23,8 +17,9 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CircleCheck } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import AuthWrapper from '../AuthWrapper';
 
 const CreateAccountForm = () => {
@@ -41,24 +36,24 @@ const CreateAccountForm = () => {
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // const [create, { loading: isLoadingCreate }] = useCreateUserMutation({
-  //   onCompleted() {
-  //     toast.success('Регистрация прошла успешно!');
-  // setIsSuccess(true)
-  //   },
-  //   onError() {
-  //     toast.error(translate('errorMessage'));
-  //   },
-  // });
+  const [create, { loading: isLoadingCreate }] = useCreateUserMutation({
+    onCompleted() {
+      toast.success(translate('successMessage'));
+      setIsSuccess(true);
+    },
+    onError() {
+      toast.error(translate('errorMessage'));
+    },
+  });
 
   const { isValid } = form.formState;
 
-  const onSubmit = (data: TypeCreateAccountSchema) => {
-    console.log(data);
-    setIsSuccess(true);
-
-    // create({ variables: { data } }); //TODO: Add registration
-  };
+  const onSubmit = useCallback(
+    (data: TypeCreateAccountSchema) => {
+      create({ variables: { data } });
+    },
+    [create],
+  );
 
   return (
     <AuthWrapper
@@ -77,63 +72,36 @@ const CreateAccountForm = () => {
       ) : (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
-            <FormField
-              control={form.control}
+            <InputController
               name="username"
-              // disabled={isLoadingCreate}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('usernameLabel')}</FormLabel>
-                  <FormControl>
-                    <Input placeholder="linwest" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    {translate('usernameDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
-            />
-            <FormField
+              label={translate('usernameLabel')}
+              description={translate('usernameDescription')}
+              placeholder="linwest"
+              disabled={isLoadingCreate}
               control={form.control}
+            />
+            <InputController
               name="email"
-              // disabled={isLoadingCreate}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('emailLabel')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="linwest@example.com"
-                      type="email"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    {translate('emailDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
-            />
-            <FormField
+              label={translate('emailLabel')}
+              description={translate('emailDescription')}
+              type="email"
+              placeholder="linwest@example.com"
+              disabled={isLoadingCreate}
               control={form.control}
+            />
+            <InputController
               name="password"
-              // disabled={isLoadingCreate}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('passwordLabel')}</FormLabel>
-                  <FormControl>
-                    <Input placeholder="********" type="password" {...field} />
-                  </FormControl>
-                  <FormDescription>
-                    {translate('passwordDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              label={translate('passwordLabel')}
+              description={translate('passwordDescription')}
+              type="password"
+              placeholder="********"
+              disabled={isLoadingCreate}
+              control={form.control}
             />
             <Button
               className="w-full mt-2"
               type="submit"
-              // disabled={!isValid || isLoadingCreate}
-              disabled={!isValid}
+              disabled={!isValid || isLoadingCreate}
             >
               {translate('submitButton')}
             </Button>

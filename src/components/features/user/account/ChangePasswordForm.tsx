@@ -1,17 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
+import { Form } from '@/components/ui/common/Form';
 import { Separator } from '@/components/ui/common/Separator';
 import { Skeleton } from '@/components/ui/common/Skeleton';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
 import { FormWrapper } from '@/components/ui/elements/FormWrapper';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import {
@@ -43,53 +36,29 @@ const ChangePasswordForm = () => {
   };
 
   return isLoadingProfile ? (
-    <ChangePasswordFormSkeleton />
+    <Skeleton className="h-96 w-full" />
   ) : (
     <FormWrapper heading={translate('heading')}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
-          <FormField
+          <InputController
             control={form.control}
             name="oldPassword"
-            // disabled={isLoadingCreate}
-            render={({ field }) => (
-              <FormItem className="px-5">
-                <FormLabel>{translate('oldPasswordLabel')}</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="********"
-                    // disabled={}
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>
-                  {translate('oldPasswordDescription')}
-                </FormDescription>
-              </FormItem>
-            )}
+            label={translate('oldPasswordLabel')}
+            placeholder="********"
+            type="password"
+            description={translate('oldPasswordDescription')}
+            className="px-5"
           />
           <Separator />
-          <FormField
+          <InputController
             control={form.control}
             name="newPassword"
-            // disabled={isLoadingCreate}
-            render={({ field }) => (
-              <FormItem className="px-5">
-                <FormLabel>{translate('newPasswordLabel')}</FormLabel>
-                <FormControl>
-                  <Input
-                    type="password"
-                    placeholder="********"
-                    // disabled={}
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>
-                  {translate('newPasswordDescription')}
-                </FormDescription>
-              </FormItem>
-            )}
+            label={translate('newPasswordLabel')}
+            placeholder="********"
+            type="password"
+            description={translate('newPasswordDescription')}
+            className="px-5"
           />
           <Separator />
           <div className="flex justify-end p-5">
@@ -102,7 +71,3 @@ const ChangePasswordForm = () => {
 };
 
 export default ChangePasswordForm;
-
-export const ChangePasswordFormSkeleton = () => {
-  return <Skeleton className="h-96 w-full" />;
-};

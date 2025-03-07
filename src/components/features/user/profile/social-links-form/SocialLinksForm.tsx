@@ -1,17 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
+import { Form } from '@/components/ui/common/Form';
 import { Separator } from '@/components/ui/common/Separator';
 import { Skeleton } from '@/components/ui/common/Skeleton';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
 import { FormWrapper } from '@/components/ui/elements/FormWrapper';
 import {
   socialLinksSchema,
@@ -46,49 +39,27 @@ const SocialLinksForm = () => {
   const isLoadingLinks = false; //TODO: Get from request
 
   return isLoadingLinks ? (
-    <SocialLinksSkeleton />
+    <Skeleton className="h-72 w-full" />
   ) : (
     <FormWrapper heading={translate('heading')}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
-          <FormField
+          <InputController
             control={form.control}
             name="title"
-            // disabled={isLoadingCreate}
-            render={({ field }) => (
-              <FormItem className="px-5">
-                <FormLabel>{translate('titleLabel')}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={translate('titlePlaceholder')}
-                    // disabled={}
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>
-                  {translate('titleDescription')}
-                </FormDescription>
-              </FormItem>
-            )}
+            label={translate('titleLabel')}
+            placeholder={translate('titlePlaceholder')}
+            description={translate('titleDescription')}
+            className="px-5"
           />
           <Separator />
-          <FormField
+          <InputController
             control={form.control}
             name="url"
-            // disabled={isLoadingCreate}
-            render={({ field }) => (
-              <FormItem className="px-5">
-                <FormLabel>{translate('urlLabel')}</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder={translate('urlPlaceholder')}
-                    // disabled={}
-                    {...field}
-                  />
-                </FormControl>
-                <FormDescription>{translate('urlDescription')}</FormDescription>
-              </FormItem>
-            )}
+            label={translate('urlLabel')}
+            placeholder={translate('urlPlaceholder')}
+            description={translate('urlDescription')}
+            className="px-5"
           />
           <Separator />
           <div className="flex justify-end p-5">
@@ -102,7 +73,3 @@ const SocialLinksForm = () => {
 };
 
 export default SocialLinksForm;
-
-export const SocialLinksSkeleton = () => {
-  return <Skeleton className="h-72 w-full" />;
-};

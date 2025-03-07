@@ -1,13 +1,8 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
+import { Form } from '@/components/ui/common/Form';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
 import {
   socialLinksSchema,
   type TypeSocialLinksSchema,
@@ -72,35 +67,21 @@ const SocialLinkItem = ({ socialLink, provided }: SocialLinkItemProps) => {
               className="flex gap-x-6"
             >
               <div className="w-96 space-y-2">
-                <FormField
+                <InputController
                   control={form.control}
                   name="title"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="Youtube"
-                          className="h-8"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
+                  label=""
+                  description=""
+                  placeholder="Youtube"
+                  inputClassName="h-8"
                 />
-                <FormField
+                <InputController
                   control={form.control}
                   name="url"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input
-                          placeholder="https://youtube.com/@channelname"
-                          className="h-8"
-                          {...field}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  )}
+                  label=""
+                  description=""
+                  placeholder="https://youtube.com/@channelname"
+                  inputClassName="h-8"
                 />
               </div>
               <div className="flex items-center gap-x-4">

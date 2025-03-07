@@ -6,15 +6,9 @@ import {
   AlertTitle,
 } from '@/components/ui/common/Alert';
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
+import { Form } from '@/components/ui/common/Form';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
+import { useResetPasswordMutation } from '@/graphql/generated/output';
 import { RoutePaths } from '@/libs/constants/routes.constants';
 import {
   resetPasswordSchema,
@@ -25,6 +19,7 @@ import { CircleCheck } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import AuthWrapper from '../AuthWrapper';
 
 const ResetPasswordForm = () => {
@@ -39,23 +34,21 @@ const ResetPasswordForm = () => {
 
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // const [create, { loading: isLoadingCreate }] = useCreateUserMutation({
-  //   onCompleted() {
-  //     toast.success('Регистрация прошла успешно!');
-  // setIsSuccess(true)
-  //   },
-  //   onError() {
-  //     toast.error(translate('errorMessage'));
-  //   },
-  // });
+  const [resetPassword, { loading: isLoadingReset }] = useResetPasswordMutation(
+    {
+      onCompleted() {
+        setIsSuccess(true);
+      },
+      onError() {
+        toast.error(translate('errorMessage'));
+      },
+    },
+  );
 
   const { isValid } = form.formState;
 
   const onSubmit = (data: TypeResetPasswordSchema) => {
-    console.log(data);
-    setIsSuccess(true);
-
-    // create({ variables: { data } }); //TODO: Add reset
+    resetPassword({ variables: { data } });
   };
 
   return (
@@ -75,30 +68,18 @@ const ResetPasswordForm = () => {
       ) : (
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
-            <FormField
+            <InputController
               control={form.control}
               name="email"
-              // disabled={isLoadingCreate}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('emailLabel')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="linwest@example.com"
-                      type="email"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    {translate('emailDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              disabled={isLoadingReset}
+              label={translate('emailLabel')}
+              placeholder="linwest@example.com"
+              type="email"
+              description={translate('emailDescription')}
             />
             <Button
               className="w-full mt-2"
-              // disabled={!isValid || isLoadingCreate}
-              disabled={!isValid}
+              disabled={!isValid || isLoadingReset}
               type="submit"
             >
               {translate('submitButton')}

@@ -1,15 +1,9 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
+import { Form } from '@/components/ui/common/Form';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
+import { useNewPasswordMutation } from '@/graphql/generated/output';
 import { RoutePaths } from '@/libs/constants/routes.constants';
 import {
   newPasswordSchema,
@@ -17,39 +11,39 @@ import {
 } from '@/schemas/auth/new-password.schema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import AuthWrapper from '../AuthWrapper';
 
 const NewPasswordForm = () => {
   const translate = useTranslations('auth.newPassword');
   const router = useRouter();
+  const params = useParams<{ token: string }>();
 
   const form = useForm<TypeNewPasswordSchema>({
     resolver: zodResolver(newPasswordSchema),
     defaultValues: {
       password: '',
-      repeatPassword: '',
+      passwordRepeat: '',
     },
   });
 
-  // const [create, { loading: isLoadingCreate }] = useCreateUserMutation({
-  //   onCompleted() {
-  //     toast.success('Регистрация прошла успешно!');
-  // setIsSuccess(true)
-  //   },
-  //   onError() {
-  //     toast.error(translate('errorMessage'));
-  //   },
-  // });
+  const [newPassword, { loading: isLoadingNewPassword }] =
+    useNewPasswordMutation({
+      onCompleted() {
+        toast.success(translate('successMessage'));
+        router.push(RoutePaths.auth.login);
+      },
+      onError() {
+        toast.error(translate('errorMessage'));
+      },
+    });
 
   const { isValid } = form.formState;
 
   const onSubmit = (data: TypeNewPasswordSchema) => {
-    console.log(data);
-    router.push(RoutePaths.auth.login);
-
-    // create({ variables: { data } }); //TODO: Add login
+    newPassword({ variables: { data: { ...data, token: params.token } } });
   };
 
   return (
@@ -60,43 +54,28 @@ const NewPasswordForm = () => {
     >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-y-3">
-          <FormField
+          <InputController
             control={form.control}
             name="password"
-            // disabled={isLoadingCreate}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{translate('passwordLabel')}</FormLabel>
-                <FormControl>
-                  <Input placeholder="********" type="password" {...field} />
-                </FormControl>
-                <FormDescription>
-                  {translate('passwordDescription')}
-                </FormDescription>
-              </FormItem>
-            )}
+            disabled={isLoadingNewPassword}
+            label={translate('passwordLabel')}
+            placeholder="********"
+            type="password"
+            description={translate('passwordDescription')}
           />
-          <FormField
+          <InputController
             control={form.control}
-            name="repeatPassword"
-            // disabled={isLoadingCreate}
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>{translate('repeatPasswordLabel')}</FormLabel>
-                <FormControl>
-                  <Input placeholder="********" type="password" {...field} />
-                </FormControl>
-                <FormDescription>
-                  {translate('repeatPasswordDescription')}
-                </FormDescription>
-              </FormItem>
-            )}
+            name="passwordRepeat"
+            disabled={isLoadingNewPassword}
+            label={translate('passwordRepeatLabel')}
+            placeholder="********"
+            type="password"
+            description={translate('passwordRepeatDescription')}
           />
           <Button
             className="w-full mt-2"
             type="submit"
-            // disabled={!isValid || isLoadingCreate}
-            disabled={!isValid}
+            disabled={!isValid || isLoadingNewPassword}
           >
             {translate('submitButton')}
           </Button>

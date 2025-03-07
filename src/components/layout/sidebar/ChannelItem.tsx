@@ -1,7 +1,6 @@
 'use client';
 
 import { Button } from '@/components/ui/common/Button';
-import { Skeleton } from '@/components/ui/common/Skeleton';
 import { ChannelAvatar } from '@/components/ui/elements/ChannelAvatar';
 import { ChannelVerified } from '@/components/ui/elements/ChannelVerified';
 import { Hint } from '@/components/ui/elements/Hint';
@@ -30,14 +29,25 @@ export const ChannelItem = ({ channel }: ChannelItemProps) => {
 
   return isCollapsed ? (
     <Hint label={channel.username} side="right" asChild>
-      <Link href={`/${channel.username}`} className="mt-3 flex w-full items-center justify-center">
+      <Link
+        href={`/${channel.username}`}
+        className="mt-3 flex w-full items-center justify-center"
+      >
         <ChannelAvatar channel={channel} isLive={channel.stream.isLive} />
       </Link>
     </Hint>
   ) : (
-    <Button className={cn('mt-2 h-11 w-full justify-start', isActive && 'bg-accent')} variant="ghost" asChild>
+    <Button
+      className={cn('mt-2 h-11 w-full justify-start', isActive && 'bg-accent')}
+      variant="ghost"
+      asChild
+    >
       <Link href={`/${channel.username}`} className="flex items-center w-full">
-        <ChannelAvatar size="sm" channel={channel} isLive={channel.stream.isLive} />
+        <ChannelAvatar
+          size="sm"
+          channel={channel}
+          isLive={channel.stream.isLive}
+        />
         <h2 className="truncate pl-3">{channel.username}</h2>
         {channel.isVerified && <ChannelVerified size="sm" />}
         {channel.stream.isLive && (
@@ -48,8 +58,4 @@ export const ChannelItem = ({ channel }: ChannelItemProps) => {
       </Link>
     </Button>
   );
-};
-
-export const ChannelItemSkeleton = () => {
-  return <Skeleton className="mt-3 h-11 w-full rounded-full" />;
 };

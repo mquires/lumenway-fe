@@ -8,16 +8,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/common/Dialog';
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-} from '@/components/ui/common/Form';
-import { Input } from '@/components/ui/common/Input';
-import { Textarea } from '@/components/ui/common/Textarea';
+import { Form } from '@/components/ui/common/Form';
+import { InputController } from '@/components/ui/elements/formControllers/InputController';
+import { TextareaController } from '@/components/ui/elements/formControllers/TextareaController';
 import { useCurrentUser } from '@/hooks/useCurrentUser';
 import {
   createPlanSchema,
@@ -61,63 +54,27 @@ const CreatePlanForm = () => {
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
+            <InputController
               control={form.control}
               name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('titleLabel')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder={translate('titlePlaceholder')}
-                      // disabled={isLoadingCreate}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    {translate('titleDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              label={translate('titleLabel')}
+              placeholder={translate('titlePlaceholder')}
+              description={translate('titleDescription')}
             />
-            <FormField
+            <TextareaController
               control={form.control}
               name="description"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('descriptionLabel')}</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder={translate('descriptionPlaceholder')}
-                      // disabled={isLoadingCreate}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    {translate('descriptionDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              label={translate('descriptionLabel')}
+              placeholder={translate('descriptionPlaceholder')}
+              description={translate('descriptionDescription')}
             />
-            <FormField
+            <InputController
               control={form.control}
               name="price"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{translate('priceLabel')}</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder={translate('pricePlaceholder')}
-                      // disabled={isLoadingCreate}
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    {translate('priceDescription')}
-                  </FormDescription>
-                </FormItem>
-              )}
+              label={translate('priceLabel')}
+              placeholder={translate('pricePlaceholder')}
+              description={translate('priceDescription')}
+              type="number"
             />
             <div className="flex justify-end">
               <Button disabled={!isValid}>{translate('submitButton')}</Button>

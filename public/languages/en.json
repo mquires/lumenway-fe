@@ -12,6 +12,7 @@
       "submitButton": "Next",
       "successAlertTitle": "Please check your email",
       "successAlertDescription": "An email has been sent to your email address to confirm registration. If you haven't found the email, then check the «Spam» folder",
+      "successMessage": "Registration successful!",
       "errorMessage": "Error during registration!"
     },
     "verify": {
@@ -48,8 +49,8 @@
       "backButtonLabel": "Already have an account? Sign in",
       "passwordLabel": "New password",
       "passwordDescription": "Enter a new password for your account",
-      "repeatPasswordLabel": "Repeat the password",
-      "repeatPasswordDescription": "Repeat the new password",
+      "passwordRepeatLabel": "Repeat the password",
+      "passwordRepeatDescription": "Repeat the new password",
       "submitButton": "Continue",
       "successMessage": "The password has been successfully changed",
       "errorMessage": "Error when setting a new password!"

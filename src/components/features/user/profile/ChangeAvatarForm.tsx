@@ -37,7 +37,7 @@ const ChangeAvatarForm = () => {
   };
 
   return isLoadingProfile ? (
-    <ChangeAvatarFormSkeleton />
+    <Skeleton className="h-52 w-full" />
   ) : (
     <FormWrapper heading={translate('heading')}>
       <Form {...form}>
@@ -99,7 +99,3 @@ const ChangeAvatarForm = () => {
 };
 
 export default ChangeAvatarForm;
-
-export const ChangeAvatarFormSkeleton = () => {
-  return <Skeleton className="h-52 w-full" />;
-};
