@@ -8,6 +8,12 @@ import {
   FaYandex,
 } from 'react-icons/fa';
 
+/**
+ * Returns appropriate icon component based on browser name
+ * @param browser - Browser name string
+ * @returns React icon component for the specified browser
+ */
+
 export function getBrowserIcon(browser: string) {
   switch (browser.toLowerCase()) {
     case 'chrome':

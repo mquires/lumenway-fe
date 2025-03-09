@@ -1,4 +1,9 @@
-export const getRandomColor = () => {
+/**
+ * Generates a random hexadecimal color code
+ * @returns {string} Random color in format '#RRGGBB'
+ */
+
+export const getRandomColor = (): string => {
   let color = '#';
   const letters = '0123456789ABCDEF';
 

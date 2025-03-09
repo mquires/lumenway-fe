@@ -1,5 +1,10 @@
 import { useTranslations } from 'next-intl';
 
+/**
+ * Hook for formatting dates with localized month names
+ * @returns Function to format dates with optional time
+ */
+
 export const useFormatDate = () => {
   const translate = useTranslations('utils.formatDate');
 

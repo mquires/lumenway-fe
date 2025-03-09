@@ -1,6 +1,11 @@
 import { useEffect } from 'react';
 import { useAuth } from './useAuth';
 
+/**
+ * Hook for managing current user data and authentication state
+ * @returns Current user data, loading state and refetch function
+ */
+
 export const useCurrentUser = () => {
   const { isAuthenticated, exit } = useAuth();
 

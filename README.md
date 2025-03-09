@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lumenway Frontend
+
+A modern streaming and content monetization platform built with Next.js 14.
+
+## Overview
+
+Lumenway is a feature-rich streaming platform designed to provide creators with powerful tools for live broadcasting, community building, and content monetization. The platform focuses on delivering high-quality streaming experiences while maintaining robust performance, security, and user engagement features.
+
+## Tech Stack
+
+- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **State Management**: [Apollo Client](https://www.apollographql.com/docs/react/)
+- **Authentication**: Cookies + 2FA
+- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/)
+
+## Key Features
+
+- 🔐 Secure authentication with 2FA support
+- 🌍 Multi-language support (EN/RU)
+- 💰 Subscription management system
+- 👤 Comprehensive user profile management
+- 🎨 Dark/Light theme support
+- 📱 Fully responsive design
+- 🔄 Real-time updates with GraphQL
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/mquires/lumenway-fe.git
+cd lumenway-fe
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Environment Setup**
 
-## Learn More
+Create a `.env.local` file in the root directory:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_API_URL=your_api_url
+NEXT_PUBLIC_GRAPHQL_URL=your_graphql_url
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Start Development Server**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+yarn dev
+```
 
-## Deploy on Vercel
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```text
+src/
+├── app/ # Next.js App Router pages
+├── components/
+│ ├── features/ # Feature-specific components
+│ │ ├── auth/ # Authentication components
+│ │ ├── user/ # User management components
+│ │ └── sponsorship/ # Subscription components
+│ └── ui/ # Reusable UI components
+├── graphql/
+│ ├── generated/ # Generated types and hooks
+│ ├── mutations/ # GraphQL mutations
+│ └── queries/ # GraphQL queries
+├── hooks/ # Custom React hooks
+├── libs/ # Utilities and configurations
+├── schemas/ # Zod validation schemas
+└── styles/ # Global styles and Tailwind config
+```
+
+## Available Scripts
+
+- `yarn dev` - Start development server
+- `yarn build` - Build for production
+- `yarn start` - Start production server
+- `yarn lint` - Run ESLint
+
+## Development Guidelines
+
+### Component Structure
+
+```tsx
+// Example component structure
+const ComponentName = () => {
+  // Hooks
+  const translate = useTranslations('namespace');
+  const form = useForm<TypeSchema>({...});
+
+  // Handlers
+  const onSubmit = (data: TypeSchema) => {...};
+
+  // Render
+  return (...);
+};
+```
+
+### Form Controllers
+
+We use reusable form controllers for consistent form handling:
+
+- `InputController` - Text input fields
+- `TextareaController` - Multiline text input
+- `OTPController` - One-time password input
